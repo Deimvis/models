@@ -1,0 +1,57 @@
+x-vk-header:
+  explicit_codegen_destinations:
+    golang:
+      - relative_path: ../golang/dmutil/predicates_as_options.gen.go
+
+components:
+  schemas:
+
+    EQBoolAsOption:
+      type: object
+      additionalProperties: false
+      required:
+        - eq
+      properties:
+        eq_enabled:
+          type: boolean
+        eq:
+          type: boolean
+
+    EQBoolAsConstOption:
+      type: object
+      additionalProperties: false
+      required:
+        - eq
+      properties:
+        eq_enabled:
+          type: boolean
+          description: immutable
+        eq:
+          type: boolean
+
+    EQOptionalBoolAsOption:
+      $ref: 'predicates.yaml#/components/schemas/EQOptionalBool'
+
+    EQOptionalBoolAsConstOption:
+      type: object
+      additionalProperties: false
+      properties:
+        eq_enabled:
+          type: boolean
+          description: immutable
+        eq:
+          type: boolean
+    
+    EQStringAsOption:
+      type: object
+      additionalProperties: false
+      required:
+        - eq
+      properties:
+        eq_enabled:
+          type: boolean
+        eq:
+          type: string
+    
+    EQOptionalStringAsOption:
+      $ref: 'predicates.yaml#/components/schemas/EQOptionalString'

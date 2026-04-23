@@ -1,0 +1,25 @@
+x-vk-header:
+  explicit_codegen_destinations:
+    golang:
+      - relative_path: ../golang/dmutil/option.gen.go
+
+components:
+  schemas:
+
+    Option:
+      type: object
+      additionalProperties: false
+      properties:
+        _enabled:
+          type: boolean
+          x-vk-go-field-name: Enabled
+          x-vk-go-extra-tags: 'yaml:"_enabled"'
+
+    ConstOption:
+      type: object
+      additionalProperties: false
+      properties:
+        _enabled:
+          type: boolean
+          x-vk-go-field-name: Enabled
+          x-vk-go-extra-tags: 'yaml:"_enabled"'

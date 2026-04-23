@@ -1,0 +1,149 @@
+x-vk-header:
+  explicit_codegen_destinations:
+    golang:
+      - relative_path: ../golang/dmutil/predicates.gen.go
+
+components:
+  schemas:
+
+    EQBool:
+      type: object
+      additionalProperties: false
+      required:
+        - eq
+      properties:
+        eq:
+          type: boolean
+
+    EQOptionalBool:
+      type: object
+      additionalProperties: false
+      properties:
+        eq_enabled:
+          type: boolean
+        eq:
+          type: boolean
+
+    EQInt64:
+      type: object
+      additionalProperties: false
+      required:
+        - eq
+      properties:
+        eq:
+          type: integer
+
+    EQOptionalInt64:
+      type: object
+      additionalProperties: false
+      properties:
+        eq_enabled:
+          type: boolean
+        eq:
+          type: integer
+
+    LTInt64:
+      type: object
+      additionalProperties: false
+      required:
+        - lt
+      properties:
+        lt:
+          type: integer
+
+    LTOptionalInt64:
+      type: object
+      additionalProperties: false
+      properties:
+        lt_enabled:
+          type: boolean
+        lt:
+          type: integer
+
+    GTInt64:
+      type: object
+      additionalProperties: false
+      required:
+        - gt
+      properties:
+        gt:
+          type: integer
+
+    GTOptionalInt64:
+      type: object
+      additionalProperties: false
+      properties:
+        gt_enabled:
+          type: boolean
+        gt:
+          type: integer
+
+    LEInt64:
+      type: object
+      additionalProperties: false
+      required:
+        - le
+      properties:
+        le:
+          type: integer
+
+    GEInt64:
+      type: object
+      additionalProperties: false
+      required:
+        - ge
+      properties:
+        ge:
+          type: integer
+
+    EQString:
+      type: object
+      additionalProperties: false
+      required:
+        - eq
+      properties:
+        eq:
+          type: string
+
+    EQOptionalString:
+      type: object
+      additionalProperties: false
+      properties:
+        eq_enabled:
+          type: boolean
+        eq:
+          type: string
+
+    AnyOfString:
+      type: object
+      additionalProperties: false
+      required:
+        - any_of
+      properties:
+        any_of_enabled:
+          type: boolean
+        any_of:
+          type: array
+          items:
+            type: string
+
+    AnyOfOptionalString:
+      type: object
+      additionalProperties: false
+      required:
+        - any_of
+      properties:
+        any_of_enabled:
+          type: boolean
+        any_of:
+          type: array
+          items:
+            type: string
+            nullable: true
+
+    RegexpFullmatch:
+      type: object
+      additionalProperties: false
+      properties:
+        regexp_fullmatch:
+          type: string

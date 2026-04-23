@@ -1,0 +1,69 @@
+x-vk-header:
+  explicit_codegen_destinations:
+    golang:
+      - relative_path: ../golang/dmtime/duration.gen.go
+
+
+#     # TODO: move to timedm
+#     # TODO: find proper name in order to distinguish with Duration that support arbitrar
+#     # TODO: generate private field where golang time.Duration will be stored (x-vk-go-extra-properties)
+#     # TODO: Duration method returns time.Duration, validating that total duration is less than max int64
+#     # TODO: ability to convert to immutable TimeDuration that moves all fields into private.
+#     # TODO: ImmutableTimeDuration (or DurationConst) with custom json, yaml parsers to parse values into private fields.
+#     #       implement it either by decoding into mutable and then reassigning into current struct
+#     #       or map like in original lib: https://github.com/go-yaml/yaml/blob/v3/decode.go#L878
+#     #       actually it will be easier to imlement if it just incapsulates mutable duration and implements view over it
+#     #       it will have getters and cast for creating mutable copy
+#     #       method pair: CloneToConst, CloneToMutable
+
+components:
+  schemas:
+    Duration:
+      type: object
+      description: |
+        Resulting duration is a total of all values.
+      additionalProperties: false
+      properties:
+        d:
+          type: integer
+          x-vk-go-def: 'uint64'
+          x-vk-go-extra-tags: 'validate:"gt=0"'
+        h:
+          type: integer
+          x-vk-go-def: 'uint64'
+          x-vk-go-extra-tags: 'validate:"gt=0"'
+        m:
+          type: integer
+          x-vk-go-def: 'uint64'
+          x-vk-go-extra-tags: 'validate:"gt=0"'
+        s:
+          type: integer
+          x-vk-go-def: 'uint64'
+          x-vk-go-extra-tags: 'validate:"gt=0"'
+        ms:
+          type: integer
+          x-vk-go-def: 'uint64'
+          x-vk-go-extra-tags: 'validate:"gt=0"'
+        mcs:
+          type: integer
+          x-vk-go-def: 'uint64'
+          x-vk-go-extra-tags: 'validate:"gt=0"'
+        ns:
+          type: integer
+          x-vk-go-def: 'uint64'
+          x-vk-go-extra-tags: 'validate:"gt=0"'
+      x-vk-go-def: |
+        struct {
+          D   *uint64 `json:"d" validate:"gt=0"`
+          H   *uint64 `json:"h" validate:"gt=0"`
+          M   *uint64 `json:"m" validate:"gt=0"`
+          S   *uint64 `json:"s" validate:"gt=0"`
+          Ms  *uint64 `json:"ms" validate:"gt=0"`
+          Mcs *uint64 `json:"mcs" validate:"gt=0"`
+          Ns  *uint64 `json:"ns" validate:"gt=0"`
+          d   *time.Duration  // cached
+        }
+
+    ConstDuration:
+      $ref: '#/components/schemas/Duration'
+      x-vk-go-def: 'struct { d time.Duration }'

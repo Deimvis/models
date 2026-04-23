@@ -1,0 +1,124 @@
+x-vk-header:
+  explicit_codegen_destinations:
+    golang:
+      - relative_path: ../golang/dmutil/utility.gen.go
+
+components:
+  schemas:
+
+    UpdateCommand:
+      type: object
+      additionalProperties: false
+      properties:
+        _enabled:
+          type: boolean
+          x-vk-go-field-name: 'Enabled'
+
+    SortOrder:
+      type: string
+      enum: [asc, desc]
+      x-vk-go-extra-tags: 'validate:"oneof=asc desc"'
+
+    SearchResultPagination:
+      type: object
+      additionalProperties: false
+      required:
+        - total_count
+      properties:
+        total_count:
+          type: integer
+
+    LimitPagination:
+      type: object
+      additionalProperties: false
+      required:
+        - limit
+      properties:
+        limit:
+          type: integer
+
+    OffsetLimitPagination:
+      type: object
+      additionalProperties: false
+      required:
+        - offset
+        - limit
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+
+    SortKey:
+      type: object
+      additionalProperties: false
+      required:
+        - index
+        - order
+      properties:
+        index:
+          type: integer
+          x-vk-go-extra-tags: 'validate:"gte=0"'
+        order:
+          $ref: '#/components/schemas/SortOrder'
+
+    SearchOptionContainsAllString:
+      type: object
+      additionalProperties: false
+      properties:
+        contains_all:
+          type: array
+          items:
+            type:
+              string
+
+    SearchOptionAnyOfString:
+      # deprecated, use AnyOfString or AnyOfStringOption
+      type: object
+      additionalProperties: false
+      properties:
+        any_of:
+          type: array
+          items:
+            type: string
+
+
+    SearchOptionEQBool:
+      # deprecated, use EQBool or EQBoolOption
+      type: object
+      additionalProperties: false
+      properties:
+        eq:
+          type: boolean
+
+    SearchOptionEQString:
+      # deprecated, use EQString or EQStringOption
+      type: object
+      additionalProperties: false
+      properties:
+        eq:
+          type: string
+
+    SearchOptionGE:
+      # deprecated
+      type: object
+      additionalProperties: false
+      properties:
+        ge:
+          type: integer
+
+    SearchOptionLE:
+      # deprecated
+      type: object
+      additionalProperties: false
+      properties:
+        le:
+          type: integer
+
+    SearchOptionGELE:
+      # deprecated
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/SearchOptionGE'
+        - $ref: '#/components/schemas/SearchOptionLE'
