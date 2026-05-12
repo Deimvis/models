@@ -1,7 +1,4 @@
-x-vk-header:
-  explicit_codegen_destinations:
-    golang:
-      - relative_path: ../golang/dmutil/option.gen.go
+x-cg-header-default_volume-dst: ../{{ output_type }}/dmutil
 
 components:
   schemas:

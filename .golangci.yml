@@ -27,6 +27,6 @@ issues:
       linters:
         - revive
         - unused
-    - path: \.gen\.go$
+    - path: \.cg\.go$
       linters:
         - revive
