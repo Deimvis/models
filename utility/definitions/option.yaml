@@ -9,8 +9,8 @@ components:
       properties:
         _enabled:
           type: boolean
-          x-vk-go-field-name: Enabled
-          x-vk-go-extra-tags: 'yaml:"_enabled"'
+          x-cg-go-field-name: Enabled
+          x-cg-go-extra-tags: 'yaml:"_enabled"'
 
     ConstOption:
       type: object
@@ -18,5 +18,5 @@ components:
       properties:
         _enabled:
           type: boolean
-          x-vk-go-field-name: Enabled
-          x-vk-go-extra-tags: 'yaml:"_enabled"'
+          x-cg-go-field-name: Enabled
+          x-cg-go-extra-tags: 'yaml:"_enabled"'

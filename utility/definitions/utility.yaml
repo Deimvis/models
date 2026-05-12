@@ -9,12 +9,12 @@ components:
       properties:
         _enabled:
           type: boolean
-          x-vk-go-field-name: 'Enabled'
+          x-cg-go-field-name: 'Enabled'
 
     SortOrder:
       type: string
       enum: [asc, desc]
-      x-vk-go-extra-tags: 'validate:"oneof=asc desc"'
+      x-cg-go-extra-tags: 'validate:"oneof=asc desc"'
 
     SearchResultPagination:
       type: object
@@ -55,7 +55,7 @@ components:
       properties:
         index:
           type: integer
-          x-vk-go-extra-tags: 'validate:"gte=0"'
+          x-cg-go-extra-tags: 'validate:"gte=0"'
         order:
           $ref: '#/components/schemas/SortOrder'
 

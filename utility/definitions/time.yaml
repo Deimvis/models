@@ -3,7 +3,7 @@ x-cg-header-default_volume-dst: ../{{ output_type }}/dmutil
 
 #     # TODO: move to timedm
 #     # TODO: find proper name in order to distinguish with Duration that support arbitrar
-#     # TODO: generate private field where golang time.Duration will be stored (x-vk-go-extra-properties)
+#     # TODO: generate private field where golang time.Duration will be stored (x-cg-go-extra-properties)
 #     # TODO: Duration method returns time.Duration, validating that total duration is less than max int64
 #     # TODO: ability to convert to immutable TimeDuration that moves all fields into private.
 #     # TODO: ImmutableTimeDuration (or DurationConst) with custom json, yaml parsers to parse values into private fields.
@@ -23,33 +23,33 @@ components:
       properties:
         d:
           type: integer
-          x-vk-go-def: 'uint64'
-          x-vk-go-extra-tags: 'validate:"gt=0"'
+          x-cg-go-def: 'uint64'
+          x-cg-go-extra-tags: 'validate:"gt=0"'
         h:
           type: integer
-          x-vk-go-def: 'uint64'
-          x-vk-go-extra-tags: 'validate:"gt=0"'
+          x-cg-go-def: 'uint64'
+          x-cg-go-extra-tags: 'validate:"gt=0"'
         m:
           type: integer
-          x-vk-go-def: 'uint64'
-          x-vk-go-extra-tags: 'validate:"gt=0"'
+          x-cg-go-def: 'uint64'
+          x-cg-go-extra-tags: 'validate:"gt=0"'
         s:
           type: integer
-          x-vk-go-def: 'uint64'
-          x-vk-go-extra-tags: 'validate:"gt=0"'
+          x-cg-go-def: 'uint64'
+          x-cg-go-extra-tags: 'validate:"gt=0"'
         ms:
           type: integer
-          x-vk-go-def: 'uint64'
-          x-vk-go-extra-tags: 'validate:"gt=0"'
+          x-cg-go-def: 'uint64'
+          x-cg-go-extra-tags: 'validate:"gt=0"'
         mcs:
           type: integer
-          x-vk-go-def: 'uint64'
-          x-vk-go-extra-tags: 'validate:"gt=0"'
+          x-cg-go-def: 'uint64'
+          x-cg-go-extra-tags: 'validate:"gt=0"'
         ns:
           type: integer
-          x-vk-go-def: 'uint64'
-          x-vk-go-extra-tags: 'validate:"gt=0"'
-      x-vk-go-def: |
+          x-cg-go-def: 'uint64'
+          x-cg-go-extra-tags: 'validate:"gt=0"'
+      x-cg-go-def: |
         struct {
           D   *uint64 `json:"d" validate:"gt=0"`
           H   *uint64 `json:"h" validate:"gt=0"`
@@ -63,4 +63,4 @@ components:
 
     ConstDuration:
       $ref: '#/components/schemas/Duration'
-      x-vk-go-def: 'struct { d time.Duration }'
+      x-cg-go-def: 'struct { d time.Duration }'
